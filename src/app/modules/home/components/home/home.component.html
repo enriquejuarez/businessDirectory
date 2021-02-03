@@ -1,0 +1,22 @@
+<div class="container">
+
+  <div class="map-container">
+    <google-map height="500px"
+      width="100%"
+      [center]="center"
+      [zoom]="zoom"
+      (mapClick)="moveMap($event)"
+      (mapMousemove)="move($event)">
+    </google-map>
+    <div>Latitude: {{display?.lat}}</div>
+    <div>Longitude: {{display?.lng}}</div>
+  </div>
+  
+  <mat-selection-list #shoes [multiple]="false">
+    <mat-list-option *ngFor="let place of places" [value]="place.name">
+      {{place.name}}
+    </mat-list-option>
+  </mat-selection-list>
+    <!-- Option selected: {{shoes.selectedOptions.selected[0]?.value}} -->
+</div>
+
