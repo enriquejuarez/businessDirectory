@@ -6,10 +6,14 @@ import { HomeComponent } from './components/home/home.component';
 import { MaterialModule } from './../material/material.module';
 
 import { GoogleMapsModule } from '@angular/google-maps';
+import { HighlightDirective } from './directives/highlight.directive';
+import { CountClickDirective } from './directives/count-click.directive';
 
 @NgModule({
   declarations: [
-    HomeComponent
+    HomeComponent,
+    HighlightDirective,
+    CountClickDirective
   ],
   imports: [
     CommonModule,
