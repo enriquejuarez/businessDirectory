@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { AngularFirestore } from '@angular/fire/firestore';
 
 import { Places } from './../../../models/places.model';
 
@@ -42,7 +43,9 @@ export class PlacesService {
     }
   ];
 
-  constructor() { }
+  constructor(
+    private firestore: AngularFirestore
+  ) { }
 
   getAllPlaces(): Places[]{
     return this.places;
