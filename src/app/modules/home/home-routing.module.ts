@@ -3,6 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 
 import { HomeComponent } from './components/home/home.component';
 import { PlaceDetailComponent } from './components/place-detail/place-detail.component';
+import { PlaceFormComponent } from './components/place-form/place-form.component';
 
 const routes: Routes = [
   {
@@ -12,6 +13,10 @@ const routes: Routes = [
   {
     path: 'detail/:id',
     component: PlaceDetailComponent
+  },
+  {
+    path: 'create',
+    component: PlaceFormComponent
   }
 ];
 

@@ -10,12 +10,17 @@
   <div>Longitude: {{display?.lng}}</div> -->
 </div>
 <div class="container">
-  <h2>Lugares cercanos</h2>
-  <mat-selection-list #place [multiple]="false">
-    <mat-list-option *ngFor="let place of places" [value]="place.name" [appHighlight]="place.plan">
-      <a appCountClick [routerLink]="['detail', place.id]">{{place.name}}</a>
-    </mat-list-option>
-  </mat-selection-list>
+  <div *ngIf="places.length">
+    <h2>Lugares cercanos</h2>
+    <mat-selection-list #place [multiple]="false">
+      <mat-list-option *ngFor="let place of places" [value]="place.name" [appHighlight]="place.plan">
+        <a appCountClick [routerLink]="['detail', place.id]">{{place.name}}</a>
+      </mat-list-option>
+    </mat-selection-list>
+  </div>
+  <div *ngIf="!places.length">
+    <h2>No hay comercios registrados</h2>
+  </div>
     <!-- Option selected: {{shoes.selectedOptions.selected[0]?.value}} -->
 </div>
 

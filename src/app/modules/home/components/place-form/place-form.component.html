@@ -1,0 +1,69 @@
+<div class="container">
+  <form [formGroup]="form" (ngSubmit)="savePlace($event)">
+    <mat-card>
+      <mat-card-header>
+        <mat-card-title>Nuevo comercio</mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <div class="row">
+          <div class="col-xs-6">
+            <mat-form-field appearance="fill">
+              <input placeholder="Nombre" formControlName="name" matInput type="text">
+            </mat-form-field>
+          </div>
+          <div class="col-xs-6">
+            <mat-form-field appearance="fill">
+              <textarea placeholder="Descripción" formControlName="description" matInput></textarea>
+            </mat-form-field>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-xs-3">
+            <mat-form-field appearance="fill">
+              <mat-label>Seleccionar</mat-label>
+              <mat-select formControlName="plan">
+                <mat-option value="free">Gratuito</mat-option>
+                <mat-option value="premium">Premium</mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+          <div class="col-xs-3">
+            <mat-form-field appearance="fill">
+              <input placeholder="Distancia" formControlName="distance" matInput type="number">
+            </mat-form-field>
+          </div>
+          <div class="col-xs-3">
+            <mat-form-field appearance="fill">
+              <input placeholder="Cercanía" formControlName="closeness" matInput type="number">
+            </mat-form-field>
+          </div>
+          <div class="col-xs-3">
+            <mat-form-field appearance="fill">
+              <mat-label>Seleccionar</mat-label>
+              <mat-select formControlName="active">
+                <mat-option value="1">Activo</mat-option>
+                <mat-option value="0">Inactivo</mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+        </div>
+        <!-- <div class="row">
+          <div class="col-xs">
+            <mat-form-field>
+              <textarea placeholder="Description" formControlName="description" matInput></textarea>
+            </mat-form-field>
+          </div>
+        </div> -->
+        <!-- <div class="row">
+          <div class="col-xs">
+            <img *ngIf="(image$ | async) as image" [src]="image" alt="">
+           <input type="file" (change)="uploadFile($event)">
+          </div>
+        </div> -->
+      </mat-card-content>
+      <mat-card-actions>
+        <button [disabled]="form.invalid" mat-raised-button type="submit">Guardar</button>
+      </mat-card-actions>
+    </mat-card>
+  </form>
+</div>

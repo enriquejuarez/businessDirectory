@@ -3,6 +3,7 @@ export interface Places{
   plan: string;
   distance: number;
   closeness: number;
-  active: boolean;
+  active: number;
   name: string;
+  description: string;
 }

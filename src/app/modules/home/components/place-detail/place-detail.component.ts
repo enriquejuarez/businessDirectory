@@ -22,7 +22,12 @@ export class PlaceDetailComponent implements OnInit {
   ngOnInit(): void {
     this.activatedRoute.params.subscribe((params: Params) => {
       this.id = params.id;
-      this.place = this.placesService.getPlace(this.id);
+      this.place = this.placesService.getPlace(Number(this.id))
+      .subscribe( (place) => {
+        console.log(place);
+        this.place = place[0];
+      },
+      err => { console.log(err); });
     });
   }
 

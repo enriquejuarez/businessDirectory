@@ -20,7 +20,12 @@ export class HomeComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.places = this.placesService.getAllPlaces();
+    this.places = this.placesService.getAllPlaces()
+    .subscribe( (places) => {
+      console.log(places);
+      this.places = places;
+    },
+    err => { console.log(err); });
   }
 
   moveMap(event: google.maps.MapMouseEvent): void {
