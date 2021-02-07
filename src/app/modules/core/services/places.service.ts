@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/firestore';
 import { Observable } from 'rxjs';
+import { HttpClient } from '@angular/common/http';
 
 import { Places } from './../../../models/places.model';
 
@@ -51,7 +52,8 @@ export class PlacesService {
   // ];
 
   constructor(
-    private firestore: AngularFirestore
+    private firestore: AngularFirestore,
+    private http: HttpClient
   ) {
     this.placesCollection = this.firestore.collection<Places>('places');
   }
@@ -62,14 +64,14 @@ export class PlacesService {
   }
 
   getPlace(id: number): any{
-    console.log('id', id);
-    // this.placesCollection = this.firestore.collection<Places>('places');
     return this.firestore.collection<Places>('places', ref => ref.where('id', '==', id)).valueChanges();
-    // this.places = this.placesCollection.valueChanges({ idField: id});
-    // return this.places;
   }
 
   savePlace(place: Places): void{
     this.firestore.collection('places').doc(String(place.id)).set(place);
+  }
+
+  getGeoData(address: string): any{
+    return this.http.get(`https://maps.google.com/maps/api/geocode/json?key=AIzaSyCiGsoFevMN2J-dXWtD_31AN4UkraR4Hq0&address=${address}`);
   }
 }

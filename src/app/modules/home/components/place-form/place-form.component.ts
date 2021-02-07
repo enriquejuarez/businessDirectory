@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { MatSnackBar } from '@angular/material/snack-bar';
@@ -14,6 +14,8 @@ export class PlaceFormComponent implements OnInit {
 
   form: FormGroup;
 
+  @ViewChild('f') myNgForm;
+
   constructor(
     private formBuilder: FormBuilder,
     private router: Router,
@@ -27,19 +29,26 @@ export class PlaceFormComponent implements OnInit {
   }
 
   openSnackBar(): void {
-    this.snackBar.openFromComponent(PizzaPartyComponent, {
+    this.snackBar.openFromComponent(NotificationComponent, {
       duration: 2000,
     });
   }
   savePlace(event: Event): void{
-    const place = this.form.value;
-    place.id = Date.now();
     event.preventDefault();
     if (this.form.valid) {
-      this.placesService.savePlace(this.form.value);
-      this.openSnackBar();
-      this.form.reset();
-      // this.router.navigate(['./places']);
+      const place = this.form.value;
+      const address = `${place.street},${place.city},${place.country}`;
+      place.id = Date.now();
+      this.placesService.getGeoData(address)
+      .subscribe((result) => {
+        console.log(result);
+        place.lat = result.results[0].geometry.location.lat;
+        place.lng = result.results[0].geometry.location.lng;
+        this.placesService.savePlace(this.form.value);
+        this.openSnackBar();
+        // this.form.reset();
+        this.myNgForm.resetForm();
+      });
     }
   }
 
@@ -50,7 +59,10 @@ export class PlaceFormComponent implements OnInit {
       plan: ['', [Validators.required]],
       distance: ['', [Validators.required]],
       closeness: ['', [Validators.required]],
-      active: ['', [Validators.required]]
+      active: ['', [Validators.required]],
+      street: ['', [Validators.required]],
+      city: ['', [Validators.required]],
+      country: ['', [Validators.required]]
     });
   }
 }
@@ -58,14 +70,14 @@ export class PlaceFormComponent implements OnInit {
 @Component({
   selector: 'app-snack-bar-component-example-snack',
   template: `
-    <span class="example-pizza-party">
-      Pizza party!!! 🍕
+    <span class="notification">
+      Comercio registrado!!!
     </span>
   `,
   styles: [`
-    .example-pizza-party {
+    .notification {
       color: hotpink;
     }
   `],
 })
-export class PizzaPartyComponent {}
+export class NotificationComponent {}

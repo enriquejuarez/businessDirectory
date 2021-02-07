@@ -1,5 +1,5 @@
 <div class="container">
-  <form [formGroup]="form" (ngSubmit)="savePlace($event)">
+  <form [formGroup]="form" (ngSubmit)="savePlace($event)" #f="ngForm">
     <mat-card>
       <mat-card-header>
         <mat-card-title>Nuevo comercio</mat-card-title>
@@ -47,19 +47,24 @@
             </mat-form-field>
           </div>
         </div>
-        <!-- <div class="row">
-          <div class="col-xs">
-            <mat-form-field>
-              <textarea placeholder="Description" formControlName="description" matInput></textarea>
+        <h2>Datos dirección</h2>
+        <div class="row">
+          <div class="col-xs-3">
+            <mat-form-field appearance="fill">
+              <input placeholder="Calle y Número" formControlName="street" matInput type="text">
             </mat-form-field>
           </div>
-        </div> -->
-        <!-- <div class="row">
-          <div class="col-xs">
-            <img *ngIf="(image$ | async) as image" [src]="image" alt="">
-           <input type="file" (change)="uploadFile($event)">
+          <div class="col-xs-3">
+            <mat-form-field appearance="fill">
+              <input placeholder="Ciudad" formControlName="city" matInput type="text">
+            </mat-form-field>
           </div>
-        </div> -->
+          <div class="col-xs-3">
+            <mat-form-field appearance="fill">
+              <input placeholder="País" formControlName="country" matInput type="text">
+            </mat-form-field>
+          </div>
+        </div>
       </mat-card-content>
       <mat-card-actions>
         <button [disabled]="form.invalid" mat-raised-button type="submit">Guardar</button>

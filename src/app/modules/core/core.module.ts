@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { HttpClientModule } from '@angular/common/http';
 
 import { CoreRoutingModule } from './core-routing.module';
 
@@ -9,7 +10,8 @@ import { PlacesService } from './services/places.service';
   declarations: [],
   imports: [
     CommonModule,
-    CoreRoutingModule
+    CoreRoutingModule,
+    HttpClientModule
   ],
   providers: [
     PlacesService
