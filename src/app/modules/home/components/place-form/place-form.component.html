@@ -1,6 +1,7 @@
 <div class="container">
   <form [formGroup]="form" (ngSubmit)="savePlace($event)" #f="ngForm">
-    <mat-card>
+    <input formControlName="id" matInput type="number" hidden>
+    <mat-card  class="mt-20">
       <mat-card-header>
         <mat-card-title>Nuevo comercio</mat-card-title>
       </mat-card-header>

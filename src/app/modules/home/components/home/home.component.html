@@ -1,10 +1,16 @@
 <div class="map-container">
-  <google-map height="500px"
+  <google-map 
+    height="500px"
     width="100%"
     [center]="center"
     [zoom]="zoom"
     (mapClick)="moveMap($event)"
     (mapMousemove)="move($event)">
+    <map-marker *ngFor="let place of places"
+              [position]="{lat: place.lat, lng: place.lng}"
+              [options]="{
+                title: place.name
+              }"></map-marker>
   </google-map>
   <!-- <div>Latitude: {{display?.lat}}</div>
   <div>Longitude: {{display?.lng}}</div> -->
@@ -14,7 +20,9 @@
     <h2>Lugares cercanos</h2>
     <mat-selection-list #place [multiple]="false">
       <mat-list-option *ngFor="let place of places" [value]="place.name" [appHighlight]="place.plan">
-        <a appCountClick [routerLink]="['detail', place.id]">{{place.name}}</a>
+        <a appCountClick [routerLink]="['create', place.id]">
+          {{place.name}} - <span class="date">Creado: {{ place.id | date:'medium' }}</span>
+        </a>
       </mat-list-option>
     </mat-selection-list>
   </div>

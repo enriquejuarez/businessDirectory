@@ -7,3 +7,53 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
   width: 85%;
   margin: 0 auto;
 }
+a{
+  text-decoration: none; 
+}
+a:link {
+  color: inherit;
+}
+a:visited{
+  color: inherit;
+}
+
+/* Helpers */
+.mb-20{
+  margin-bottom: 20px !important;
+}
+.mt-20{
+  margin-top: 20px !important;
+}
+.mb-40{
+  margin-bottom: 40px !important;
+}
+.mt-40{
+  margin-top: 40px !important;
+}
+.mb-60{
+  margin-bottom: 60px !important;
+}
+.mt-60{
+  margin-top: 60px !important;
+}
+.pt-20{
+  padding-bottom: 20px !important;
+}
+.pt-20{
+  padding-top: 20px !important;
+}
+.pt-40{
+  padding-bottom: 40px !important;
+}
+.pt-40{
+  padding-top: 40px !important;
+}
+.pt-60{
+  padding-bottom: 60px !important;
+}
+.pt-60{
+  padding-top: 60px !important;
+}
+.divider{
+  height: 150px;
+}
