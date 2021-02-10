@@ -5,6 +5,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { CoreRoutingModule } from './core-routing.module';
 
 import { PlacesService } from './services/places.service';
+import { AuthService } from './services/auth.service';
 
 @NgModule({
   declarations: [],
@@ -14,7 +15,8 @@ import { PlacesService } from './services/places.service';
     HttpClientModule
   ],
   providers: [
-    PlacesService
+    PlacesService,
+    AuthService
   ]
 })
 export class CoreModule { }

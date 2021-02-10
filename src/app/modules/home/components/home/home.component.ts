@@ -40,10 +40,9 @@ export class HomeComponent implements OnInit {
   ngOnInit(): void {
     this.places = this.placesService.getAllPlaces()
     .subscribe( (places) => {
-      console.log(places);
       this.places = places;
     },
-    err => { console.log(err); });
+    err => { console.log('Se ha generado un error: ', err); });
   }
 
   animate(): void{
