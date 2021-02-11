@@ -35,7 +35,7 @@ export class AuthService {
       this.route.navigate(['/places']);
     })
     .catch((error) => {
-      console.log(error);
+      console.log('Error', error);
     });
   }
 
@@ -46,7 +46,7 @@ export class AuthService {
       this.route.navigate(['/places']);
     })
     .catch((error) => {
-      console.log(error);
+      console.log('Error', error);
     });
   }
 
@@ -66,6 +66,7 @@ export class AuthService {
 
   logout(): void{
     this.angularFireAuth.signOut().then(() => {
+      this.route.navigate(['/places']);
       localStorage.removeItem('business');
     })
   }
