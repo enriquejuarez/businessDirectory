@@ -16,8 +16,23 @@ a:link {
 a:visited{
   color: inherit;
 }
-
+.title{
+  font-size: 1.8rem !important;
+  color: brown;
+}
+.center{
+  margin: 0 auto;
+}
+.center-text{
+  text-align: center;
+}
 /* Helpers */
+.mb-10{
+  margin-bottom: 10px !important;
+}
+.mt-10{
+  margin-top: 10px !important;
+}
 .mb-20{
   margin-bottom: 20px !important;
 }

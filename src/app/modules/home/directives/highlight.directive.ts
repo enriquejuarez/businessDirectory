@@ -13,7 +13,7 @@ export class HighlightDirective implements OnInit {
   @Input('appHighlight') plan = '';
 
   ngOnInit(): void {
-    if(this.plan === 'premium'){
+    if (this.plan === 'premium'){
       // this.renderer.setStyle(this.elRef.nativeElement, 'background-color', 'gray');
       this.renderer.setStyle(this.elRef.nativeElement, 'font-weight', '800');
     }

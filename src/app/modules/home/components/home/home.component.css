@@ -8,3 +8,13 @@
   height: 200px;
   background-color: aquamarine;
 }
+mat-card{
+  background-color: rgb(65, 124, 119);
+  color: white;
+}
+mat-card:hover{
+  cursor: pointer;
+  box-shadow: 1px 5px 5px rgb(35, 165, 154);
+  /* transform: scale(1.01); */
+  transition: box-shadow .2s ease-in-out;
+}
