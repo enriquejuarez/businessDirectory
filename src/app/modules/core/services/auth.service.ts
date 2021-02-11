@@ -10,6 +10,7 @@ import { User } from './../../../models/user.model';
 export class AuthService {
 
   userState: any;
+  private isLoggedIn = false;
 
   constructor(
     private angularFireAuth: AngularFireAuth,
@@ -17,13 +18,16 @@ export class AuthService {
   ) {
     this.angularFireAuth.authState
       .subscribe((user) => {
+        console.log('Se ejecuta un cambio');
         if (user) {
           this.userState = user;
           localStorage.setItem('business', JSON.stringify(this.userState));
-          JSON.parse(localStorage.getItem('business'))
+          JSON.parse(localStorage.getItem('business'));
+          this.isLoggedIn = true;
         }else{
           localStorage.setItem('business', null);
-          JSON.parse(localStorage.getItem('business'))
+          JSON.parse(localStorage.getItem('business'));
+          this.isLoggedIn = false;
         }
       })
    }
@@ -50,24 +54,28 @@ export class AuthService {
     });
   }
 
-  isLogged(){
+  isLogged(): any{
     return this.angularFireAuth.authState;
   }
 
-  setUserData(user){
+  setUserData(user): void{
     const userState: User = {
       uid: user.uid,
       email: user.email,
       displayName: user.displayName,
       photoURL: user.photoURL,
       emailVerified: user.emailVerified
-    }
+    };
   }
 
   logout(): void{
     this.angularFireAuth.signOut().then(() => {
       this.route.navigate(['/places']);
       localStorage.removeItem('business');
-    })
+    });
+  }
+
+  getIsLoggedId(): boolean{
+    return this.isLoggedIn;
   }
 }
