@@ -22,7 +22,6 @@
     <div class="col-xs-12 col-sm-offset-1 col-sm-7 mt-40">
       <div class="box">
         <h2 class="title center-text">Lugares cercanos</h2>
-
         <mat-card *ngFor="let place of places" appCountClick [routerLink]="['create', place.id]" class="mat-elevation-z5 mb-20">
           <mat-card-header>
             <mat-card-title>{{ place.name }}</mat-card-title>
@@ -32,14 +31,6 @@
             <p>{{ place.description }}</p>
           </mat-card-content>
         </mat-card>
-
-        <!-- <mat-selection-list #place [multiple]="false">
-          <mat-list-option *ngFor="let place of places" [value]="place.name">
-            <a appCountClick [routerLink]="['create', place.id]" [appHighlight]="place.plan">
-              {{place.name}} - <span class="date">Creado: {{ place.id | date:'medium' }}</span>
-            </a>
-          </mat-list-option>
-        </mat-selection-list> -->
       </div>
     </div>
     <div class="col-xs-12 col-sm-offset-1 col-sm-3 mt-40">

@@ -1,10 +1,14 @@
 import { Component, Inject, OnInit, ViewChild } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { MatSnackBar, MAT_SNACK_BAR_DATA } from '@angular/material/snack-bar';
 import { ActivatedRoute, Params } from '@angular/router';
+import { Observable } from 'rxjs';
+import { switchMap, map, debounceTime } from 'rxjs/operators';
+import 'rxjs/Rx';
 
 import { PlacesService } from './../../../core/services/places.service';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-place-form',
@@ -16,18 +20,42 @@ export class PlaceFormComponent implements OnInit {
   form: FormGroup;
   @ViewChild('f') myNgForm;
   id: string;
+  results$: Observable<any>;
+  searchField: FormControl;
 
   constructor(
     private formBuilder: FormBuilder,
     private router: Router,
     private placesService: PlacesService,
     private snackBar: MatSnackBar,
-    private activatedRoute: ActivatedRoute
+    private activatedRoute: ActivatedRoute,
+    private http: HttpClient
   ) {
     this.buildForm();
     this.activatedRoute.params.subscribe((params: Params) => {
       this.id = params.id;
     });
+    const URL = 'https://maps.google.com/maps/api/geocode/json?components=country:MX';
+    this.searchField = new FormControl();
+    this.results$ = this.searchField.valueChanges
+      .pipe(
+        debounceTime(1000),
+        map((query) => {
+          if (query) {
+            return query;
+          }
+        }),
+        switchMap(
+          query =>  {
+            return this.http.get(`${URL}&address=${query}&key=AIzaSyCiGsoFevMN2J-dXWtD_31AN4UkraR4Hq0`)
+          }
+        ),
+        map((result: any) => {
+          console.log(result.results);
+          return result.results;
+        })
+      )
+      
   }
 
   ngOnInit(): void {
@@ -86,7 +114,7 @@ export class PlaceFormComponent implements OnInit {
   selector: 'app-snack-bar',
   template: `
     <span class="notification">
-      {{data}}
+      {{ data }}
     </span>
   `,
   styles: [`

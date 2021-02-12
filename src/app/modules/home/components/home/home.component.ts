@@ -27,7 +27,7 @@ import { animate, state, style, transition, trigger } from '@angular/animations'
 })
 export class HomeComponent implements OnInit {
 
-  places: Places[];
+  places: Places[] =  null;
   center: google.maps.LatLngLiteral = {lat: 19.5379302, lng: -96.9092582};
   zoom = 14;
   display;

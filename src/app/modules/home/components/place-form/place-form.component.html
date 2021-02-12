@@ -72,4 +72,15 @@
       </mat-card-actions>
     </mat-card>
   </form>
+  <div>
+    <h2>Buscar dirección en Google Maps</h2>
+    <form>
+      <mat-form-field appearance="fill">
+        <input [formControl]="searchField" matInput type="text">
+      </mat-form-field>
+    </form>
+    <ul>
+      <li *ngFor="let result of results$ | async">{{ result.formatted_address }}</li>
+    </ul>
+  </div>
 </div>

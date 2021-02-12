@@ -4,7 +4,7 @@ import { CommonModule } from '@angular/common';
 import { HomeRoutingModule } from './home-routing.module';
 import { HomeComponent } from './components/home/home.component';
 import { MaterialModule } from './../material/material.module';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { GoogleMapsModule } from '@angular/google-maps';
 import { HighlightDirective } from './directives/highlight.directive';
@@ -25,6 +25,7 @@ import { PlaceFormComponent } from './components/place-form/place-form.component
     HomeRoutingModule,
     MaterialModule,
     GoogleMapsModule,
+    FormsModule,
     ReactiveFormsModule
   ]
 })
