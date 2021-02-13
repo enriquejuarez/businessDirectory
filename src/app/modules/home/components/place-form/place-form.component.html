@@ -7,43 +7,56 @@
       </mat-card-header>
       <mat-card-content>
         <div class="row">
-          <div class="col-xs-6">
+          <div class="col-xs-12 col-md-6">
             <mat-form-field appearance="fill">
               <input placeholder="Nombre" formControlName="name" matInput type="text">
             </mat-form-field>
           </div>
-          <div class="col-xs-6">
+          <div class="col-xs-12 col-md-6">
             <mat-form-field appearance="fill">
               <textarea placeholder="Descripción" formControlName="description" matInput></textarea>
             </mat-form-field>
           </div>
         </div>
         <div class="row">
-          <div class="col-xs-3">
+          <div class="col-xs-12 col-md-3">
             <mat-form-field appearance="fill">
-              <mat-label>Seleccionar</mat-label>
+              <mat-label>Plan</mat-label>
               <mat-select formControlName="plan">
                 <mat-option value="free">Gratuito</mat-option>
                 <mat-option value="premium">Premium</mat-option>
               </mat-select>
             </mat-form-field>
           </div>
-          <div class="col-xs-3">
+          <div class="col-xs-12 col-md-3">
             <mat-form-field appearance="fill">
               <input placeholder="Distancia" formControlName="distance" matInput type="number">
             </mat-form-field>
           </div>
-          <div class="col-xs-3">
+          <div class="col-xs-12 col-md-3">
             <mat-form-field appearance="fill">
               <input placeholder="Cercanía" formControlName="closeness" matInput type="number">
             </mat-form-field>
           </div>
-          <div class="col-xs-3">
+          <div class="col-xs-12 col-md-3">
             <mat-form-field appearance="fill">
-              <mat-label>Seleccionar</mat-label>
+              <mat-label>Estatus</mat-label>
               <mat-select formControlName="active">
                 <mat-option value="1">Activo</mat-option>
                 <mat-option value="0">Inactivo</mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-xs-12 col-md-3">
+            <mat-form-field appearance="fill">
+              <mat-label>Categoría</mat-label>
+              <mat-select formControlName="category">
+                <mat-option value="Restaurante">Restaurante</mat-option>
+                <mat-option value="Hotel">Hotel</mat-option>
+                <mat-option value="Abarrotes">Abarrotes</mat-option>
+                <mat-option value="Escuela">Escuela</mat-option>
               </mat-select>
             </mat-form-field>
           </div>

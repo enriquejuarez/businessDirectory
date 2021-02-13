@@ -11,4 +11,5 @@ export interface Places{
   country: string;
   lat?: number;
   lng?: number;
+  category: string;
 }

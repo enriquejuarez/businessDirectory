@@ -85,7 +85,6 @@ export class PlaceFormComponent implements OnInit {
     }
     this.placesService.getGeoData(address)
     .subscribe((result) => {
-      console.log(result);
       place.lat = result.results[0].geometry.location.lat;
       place.lng = result.results[0].geometry.location.lng;
       this.placesService.savePlace(this.form.value);
@@ -103,6 +102,7 @@ export class PlaceFormComponent implements OnInit {
       distance: ['', [Validators.required]],
       closeness: ['', [Validators.required]],
       active: ['', [Validators.required]],
+      category: ['', [Validators.required]],
       street: ['', [Validators.required]],
       city: ['', [Validators.required]],
       country: ['', [Validators.required]]

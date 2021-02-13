@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
+import { animate, state, style, transition, trigger } from '@angular/animations';
+import { Subscription } from 'rxjs';
 
 import { PlacesService } from './../../../core/services/places.service';
 import { Places } from './../../../../models/places.model';
-import { animate, state, style, transition, trigger } from '@angular/animations';
+import { AuthService } from './../../../core/services/auth.service';
 
 @Component({
   selector: 'app-home',
@@ -27,20 +29,38 @@ import { animate, state, style, transition, trigger } from '@angular/animations'
 })
 export class HomeComponent implements OnInit {
 
-  places: Places[] =  null;
+  allPlaces: Places[];
+  featuredPlaces: Places[];
   center: google.maps.LatLngLiteral = {lat: 19.5379302, lng: -96.9092582};
   zoom = 14;
   display;
   state = 'final';
+  loggendin: boolean;
+  subscription: Subscription;
 
   constructor(
-    private placesService: PlacesService
-  ) { }
+    private placesService: PlacesService,
+    private authService: AuthService
+  ) {
+    this.subscription = this.authService.isLogged()
+      .subscribe((result) => {
+        if (result && result.uid){
+          this.loggendin = true;
+        }else{
+          this.loggendin = false;
+        }
+      },
+      (error) => {
+        this.loggendin = false;
+        console.log('Error logout: ', error);
+      })
+   }
 
   ngOnInit(): void {
-    this.places = this.placesService.getAllPlaces()
+    this.allPlaces = this.placesService.getAllPlaces()
     .subscribe( (places) => {
-      this.places = places;
+      this.allPlaces = places;
+      this.featuredPlaces = places.filter((place) => place.plan === 'premium');
     },
     err => { console.log('Se ha generado un error: ', err); });
   }

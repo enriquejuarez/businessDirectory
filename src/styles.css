@@ -19,6 +19,11 @@ a:visited{
 .title{
   font-size: 1.8rem !important;
   color: brown;
+  font-family: 'Bangers', cursive !important;
+}
+.text{
+  font-size: 1.2rem;
+  font-family: Arial, Helvetica, sans-serif;
 }
 .center{
   margin: 0 auto;

@@ -15,6 +15,16 @@ mat-card{
 mat-card:hover{
   cursor: pointer;
   box-shadow: 1px 5px 5px rgb(35, 165, 154);
-  /* transform: scale(1.01); */
   transition: box-shadow .2s ease-in-out;
+}
+.place-title{
+  font-family: 'Bangers', cursive;
+  font-size: 1.5rem;
+}
+.place-category{
+  font-style: italic;
+}
+mat-card-subtitle{
+  color: rgb(68, 6, 6);
+  font-weight: 700;
 }
