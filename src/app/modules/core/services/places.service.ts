@@ -32,6 +32,10 @@ export class PlacesService {
     this.firestore.collection('places').doc(String(place.id)).set(place);
   }
 
+  deletePlace(place: Places): Promise<any>{
+    return this.firestore.collection('places').doc(String(place.id)).delete();
+  }
+
   getGeoData(address: string): any{
     return this.http.get(`https://maps.google.com/maps/api/geocode/json?key=AIzaSyCiGsoFevMN2J-dXWtD_31AN4UkraR4Hq0&address=${address}`);
   }

@@ -6,6 +6,8 @@ import { PlacesService } from './../../../core/services/places.service';
 import { Places } from './../../../../models/places.model';
 import { AuthService } from './../../../core/services/auth.service';
 
+import { ToastrService } from 'ngx-toastr';
+
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -40,7 +42,8 @@ export class HomeComponent implements OnInit {
 
   constructor(
     private placesService: PlacesService,
-    private authService: AuthService
+    private authService: AuthService,
+    private toastr: ToastrService
   ) {
     this.subscription = this.authService.isLogged()
       .subscribe((result) => {
@@ -83,6 +86,15 @@ export class HomeComponent implements OnInit {
 
   move(event: google.maps.MapMouseEvent): void {
     this.display = event.latLng.toJSON();
+  }
+
+  deletePlace(place: Places): void{
+    this.placesService.deletePlace(place)
+    .then(() => {
+      this.toastr.success('Operación exitosa!', 'Comercio eliminado');
+    }).catch(() => {
+      this.toastr.error('Contacte a soporte', 'No es posible eliminar en este momento');
+    });
   }
 
 }

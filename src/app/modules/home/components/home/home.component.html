@@ -39,7 +39,7 @@
             <button mat-mini-fab color="primary" aria-label="" [routerLink]="['create', place.id]">
               <mat-icon>edit</mat-icon>
             </button>
-            <button mat-mini-fab color="warn" aria-label="" [routerLink]="['create', place.id]">
+            <button mat-mini-fab color="warn" aria-label="" (click)="deletePlace(place)">
               <mat-icon>delete</mat-icon>
             </button>
           </div>
