@@ -1,0 +1,30 @@
+.date{
+  font-weight: 800;
+  font-size: 14px;
+  font-style: italic;
+}
+#square{
+  width: 200px;
+  height: 200px;
+  background-color: aquamarine;
+}
+mat-card{
+  background-color: rgb(65, 124, 119);
+  color: white;
+}
+mat-card:hover{
+  cursor: pointer;
+  box-shadow: 1px 5px 5px rgb(35, 165, 154);
+  transition: box-shadow .2s ease-in-out;
+}
+.place-title{
+  font-family: 'Bangers', cursive;
+  font-size: 1.5rem;
+}
+.place-category{
+  font-style: italic;
+}
+mat-card-subtitle{
+  color: rgb(68, 6, 6);
+  font-weight: 700;
+}

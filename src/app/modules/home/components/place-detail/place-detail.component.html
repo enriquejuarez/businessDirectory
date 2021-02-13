@@ -1,0 +1,36 @@
+<div class="container">
+  <mat-card class="mat-elevation-z8 mt-40">
+    <p class="title">{{ place.name }}</p>
+    <p>[{{ place.category }}]</p>
+    <p class="text">{{ place.description }}</p>
+    <div>
+      <address>Ubicación: {{ place.street }} - {{ place.city }} - {{ place.country }}</address>
+    </div>
+  </mat-card>
+  <div class="location-map mt-20 mb-40">
+    <div class="map-container">
+      <google-map 
+        height="400px"
+        width="50%"
+        [center]="center"
+        [zoom]="zoom">
+        <map-marker
+          [position]="{lat: place.lat, lng: place.lng}"
+          [options]="{
+            title: place.name
+          }">
+        </map-marker>
+      </google-map>
+    </div>
+  </div>
+  <div class="comment-container">
+    <p class="title">Comentarios</p>
+    <div class="comment mb-10">
+      <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Neque reiciendis inventore aliquid, ab quo quos deleniti odit voluptatibus voluptatem molestiae!</p>
+    </div>
+    <div class="comment mb-10">
+      <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Neque reiciendis inventore aliquid, ab quo quos deleniti odit voluptatibus voluptatem molestiae!</p>
+    </div>
+  </div>
+  
+</div>

@@ -1,0 +1,71 @@
+<div class="map-container">
+  <google-map 
+    height="500px"
+    width="100%"
+    [center]="center"
+    [zoom]="zoom">
+    <map-marker *ngFor="let place of allPlaces"
+              [position]="{lat: place.lat, lng: place.lng}"
+              [options]="{
+                title: place.name
+              }"></map-marker>
+  </google-map>
+  <!-- <div>Latitude: {{display?.lat}}</div>
+  <div>Longitude: {{display?.lng}}</div> 
+  (mapClick)="moveMap($event)"
+  (mapMousemove)="move($event)"
+  -->
+</div>
+<div class="container">
+
+  <div class="row" *ngIf="allPlaces.length">
+    <div class="col-xs-12 col-sm-offset-1 col-sm-7 mt-40">
+      <div class="box">
+        <h2 class="title center-text">Comercios</h2>
+        <div *ngFor="let place of allPlaces" class="mb-20">
+          <mat-card appCountClick [routerLink]="['detail', place.id]" class="mat-elevation-z5">
+            <mat-card-header>
+              <mat-card-title>
+                <p class="place-title">{{ place.name }}</p>
+                <p class="place-category">{{ place.category }}</p>
+              </mat-card-title>
+              <mat-card-subtitle>Creado: {{ place.id | date:'medium' }}</mat-card-subtitle>
+            </mat-card-header>
+            <mat-card-content>
+              <p class="text">{{ place.description }}</p>
+            </mat-card-content>
+          </mat-card>
+          <div class="actions" *ngIf="loggendin">
+            <button mat-mini-fab color="primary" aria-label="" [routerLink]="['create', place.id]">
+              <mat-icon>edit</mat-icon>
+            </button>
+            <button mat-mini-fab color="warn" aria-label="" (click)="deletePlace(place)">
+              <mat-icon>delete</mat-icon>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-xs-12 col-sm-offset-1 col-sm-3 mt-40">
+      <div class="box">
+        <h2 class="title center-text">Destacados</h2>
+        <mat-card *ngFor="let place of featuredPlaces" appCountClick [routerLink]="['create', place.id]" class="mat-elevation-z5 mb-20">
+          <mat-card-header>
+            <mat-card-title>{{ place.name }}</mat-card-title>
+            <mat-card-subtitle>Creado: {{ place.id | date:'medium' }}</mat-card-subtitle>
+          </mat-card-header>
+          <mat-card-content>
+            <p>{{ place.description }}</p>
+          </mat-card-content>
+        </mat-card>
+      </div>
+    </div>
+  </div>
+  <div *ngIf="!allPlaces.length">
+    <h2 class="title center-text">No hay comercios para mostrar</h2>
+  </div>
+    <!-- Option selected: {{shoes.selectedOptions.selected[0]?.value}} -->
+    <!-- <div id="square" [@animationContent]="state" (@animationContent.start)="animationStarts($event)" (@animationContent.done)="animationFinal($event)"></div>
+    <button (click)="animate()">Animar</button> -->
+</div>
+

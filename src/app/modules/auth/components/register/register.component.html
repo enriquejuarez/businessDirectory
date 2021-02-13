@@ -1,0 +1,38 @@
+<form [formGroup]="form" (ngSubmit)="register($event)">
+  <div class="row center-xs middle-xs login-container">
+    <div class="col-xs-3">
+      <div class="box">
+        <mat-card>
+          <a routerLink="/places">
+            <img src="assets/images/logo.png" alt="logo empresa" class="mb-20" style="width: 150px;">
+          </a>
+          <mat-card-header class="center-xs">
+            <mat-card-title class="title mb-20">Registro</mat-card-title>
+          </mat-card-header>
+          <img src="assets/icons/login.png" alt="icono login">
+          <mat-card-content>
+            <div class="row">
+              <div class="col-xs">
+                <mat-form-field>
+                  <input placeholder="email" formControlName="email" matInput type="email">
+                </mat-form-field>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-xs">
+                <mat-form-field>
+                  <input placeholder="password" formControlName="password" matInput type="password" autocomplete="on">
+                </mat-form-field>
+              </div>
+            </div>
+            <p class="error">{{ error }}</p>
+          </mat-card-content>
+          <mat-card-actions>
+            <button [disabled]="form.invalid" mat-raised-button color="primary" type="submit">Ingresar</button>
+            <button mat-raised-button color="accent" routerLink="/auth/login">Login</button>
+          </mat-card-actions>
+        </mat-card>
+      </div>
+    </div>
+  </div>
+</form>
