@@ -29,14 +29,14 @@ export class AuthService {
           JSON.parse(localStorage.getItem('business'));
           this.isLoggedIn = false;
         }
-      })
+      });
    }
 
   login(email: string, password: string): void{
     this.angularFireAuth.signInWithEmailAndPassword(email, password)
     .then((result) => {
       this.setUserData(result.user);
-      this.route.navigate(['/places']);
+      this.route.navigate(['/administration']);
     })
     .catch((error) => {
       console.log('Error', error);
@@ -47,7 +47,7 @@ export class AuthService {
     this.angularFireAuth.createUserWithEmailAndPassword(email, password)
     .then((result) => {
       this.setUserData(result.user);
-      this.route.navigate(['/places']);
+      this.route.navigate(['/administration']);
     })
     .catch((error) => {
       console.log('Error', error);

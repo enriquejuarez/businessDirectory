@@ -5,7 +5,7 @@ import { MatSnackBar, MAT_SNACK_BAR_DATA } from '@angular/material/snack-bar';
 import { ActivatedRoute, Params } from '@angular/router';
 import { Observable } from 'rxjs';
 import { switchMap, map, debounceTime } from 'rxjs/operators';
-import 'rxjs/Rx';
+// import 'rxjs/Rx';
 
 import { PlacesService } from './../../../core/services/places.service';
 import { HttpClient } from '@angular/common/http';
