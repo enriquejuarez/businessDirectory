@@ -13,6 +13,8 @@ export class PlaceDetailComponent implements OnInit {
 
   id: string;
   place: Places;
+  center: google.maps.LatLngLiteral = {lat: 19.5379302, lng: -96.9092582};
+  zoom = 14;
 
   constructor(
     private activatedRoute: ActivatedRoute,

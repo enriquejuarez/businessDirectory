@@ -56,7 +56,7 @@ export class HomeComponent implements OnInit {
       (error) => {
         this.loggendin = false;
         console.log('Error logout: ', error);
-      })
+      });
    }
 
   ngOnInit(): void {
