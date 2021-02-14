@@ -1,32 +1,33 @@
 <mat-drawer-container class="container" autosize>
   <mat-drawer #drawer class="sidenav" mode="side">
-    <ul>
-      <li>Option 1</li>
-      <li>Option 2</li>
-      <li>Option 3</li>
-      <li>Option 4</li>
-      <li>Option 5</li>
-    </ul>
+    <mat-selection-list #shoes [multiple]="false">
+      <mat-list-option *ngFor="let option of menuOptions" [value]="option">
+        {{ option }}
+      </mat-list-option>
+    </mat-selection-list>
   </mat-drawer>
 
   <div class="sidenav-content">
     <mat-toolbar color="primary">
-      <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
+      <button mat-icon-button class="" aria-label="Open navigation"  (click)="drawer.toggle()">
         <mat-icon>menu</mat-icon>
       </button>
-      <span>My App</span>
-      <span class="example-spacer"></span>
-      <button mat-icon-button class="example-icon favorite-icon" aria-label="Example icon-button with heart icon">
-        <mat-icon>favorite</mat-icon>
+      <span>Business Directory Admin</span>
+      <span class="spacer"></span>
+      <button mat-button [matMenuTriggerFor]="sessionMenu" aria-label="Session options">
+        <div>{{ email }}</div>
       </button>
-      <button mat-icon-button class="example-icon" aria-label="Example icon-button with share icon">
-        <mat-icon>share</mat-icon>
-      </button>
+      <mat-menu #sessionMenu="matMenu">
+        <button mat-menu-item>
+          <mat-icon>edit</mat-icon>
+          <span>Editar perfil</span>
+        </button>
+        <button mat-menu-item>
+          <mat-icon>logout</mat-icon>
+          <span>Cerrar sesión</span>
+        </button>
+      </mat-menu>
     </mat-toolbar>
-    <button type="button" mat-button (click)="drawer.toggle()">
-      Toggle sidenav
-    </button>
     <router-outlet></router-outlet>
   </div>
-
 </mat-drawer-container>
