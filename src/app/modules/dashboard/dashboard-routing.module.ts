@@ -3,6 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 
 import { IndexComponent } from './components/index/index.component';
 import { LayoutComponent } from './components/layout/layout.component';
+import { CategoriesComponent } from './components/categories/categories.component';
 
 const routes: Routes = [
   {
@@ -12,13 +13,13 @@ const routes: Routes = [
       {
         path: '',
         component: IndexComponent
+      },
+      {
+        path: 'categories',
+        component: CategoriesComponent
       }
     ]
   }
-  // {
-  //   path: '',
-  //   component: IndexComponent
-  // }
 ];
 
 @NgModule({

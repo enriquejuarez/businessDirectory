@@ -11,8 +11,17 @@ import { AuthService } from './../../../core/services/auth.service';
 export class LayoutComponent implements OnInit {
 
   subscription: Subscription;
-  email: string = '';
-  menuOptions: string[] = ['Comercios', 'Categorías'];
+  email = '';
+  menuOptions = [
+    {
+      name: 'Comercios',
+      link: ''
+    },
+    {
+      name: 'Categorías',
+      link: 'categories'
+    }
+  ];
 
   constructor(
     private authService: AuthService
@@ -25,9 +34,8 @@ export class LayoutComponent implements OnInit {
         }
       },
       (error) => {
-        this.loggendin = false;
         console.log('Error logout: ', error);
-      })
+      });
    }
 
   ngOnInit(): void {

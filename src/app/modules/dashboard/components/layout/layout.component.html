@@ -1,8 +1,8 @@
 <mat-drawer-container class="container" autosize>
   <mat-drawer #drawer class="sidenav" mode="side">
     <mat-selection-list #shoes [multiple]="false">
-      <mat-list-option *ngFor="let option of menuOptions" [value]="option">
-        {{ option }}
+      <mat-list-option *ngFor="let option of menuOptions" [value]="option" routerLink="{{ option.link }}">
+        {{ option.name }}
       </mat-list-option>
     </mat-selection-list>
   </mat-drawer>

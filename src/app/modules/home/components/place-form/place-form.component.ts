@@ -54,8 +54,7 @@ export class PlaceFormComponent implements OnInit {
           console.log(result.results);
           return result.results;
         })
-      )
-      
+      );
   }
 
   ngOnInit(): void {

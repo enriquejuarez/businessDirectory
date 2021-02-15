@@ -1,1 +1,26 @@
-<p>categories works!</p>
+<div class="container">
+  <div class="row actions">
+    <div class="col-xs-12 col-sm-10">
+      <div class="box">
+        <mat-form-field appearance="fill" class="search">
+          <input placeholder="Buscar" matInput type="text">
+        </mat-form-field>
+      </div>
+    </div>
+    <div class="col-xs-12 col-sm-2">
+      <div class="box">
+        <div class="icons">
+          <button mat-fab color="primary" aria-label="Search category">
+            <mat-icon>search</mat-icon>
+          </button>
+          <button mat-fab color="primary" aria-label="Add category" (click)="openDialog()">
+            <mat-icon>add</mat-icon>
+          </button>
+        </div>  
+      </div>
+    </div>
+  </div>
+  <div class="category-grid mb-50 mt-30">
+    <app-category *ngFor="let category of categories" [category]="category"></app-category>
+  </div>
+</div>
