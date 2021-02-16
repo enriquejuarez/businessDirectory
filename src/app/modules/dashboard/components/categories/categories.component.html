@@ -13,7 +13,7 @@
           <button mat-fab color="primary" aria-label="Search category">
             <mat-icon>search</mat-icon>
           </button>
-          <button mat-fab color="primary" aria-label="Add category" (click)="openDialog()">
+          <button mat-fab color="primary" aria-label="Add category" (click)="openDialog('new', 'Nueva categoría', {})">
             <mat-icon>add</mat-icon>
           </button>
         </div>  
@@ -21,6 +21,6 @@
     </div>
   </div>
   <div class="category-grid mb-50 mt-30">
-    <app-category *ngFor="let category of categories" [category]="category"></app-category>
+    <app-category *ngFor="let category of categories" [category]="category" (categoryClicked)="editCategory($event)"></app-category>
   </div>
 </div>

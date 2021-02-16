@@ -3,7 +3,7 @@
   <div class="row">
     <div class="col-xs-12">
         <div class="box">
-          <mat-form-field>
+          <mat-form-field appearance="fill">
             <mat-label>Nombre</mat-label>
             <input matInput [(ngModel)]="data.category.name" type="text">
           </mat-form-field>
@@ -13,7 +13,7 @@
   <div class="row">
     <div class="col-xs-12">
         <div class="box">
-          <mat-form-field>
+          <mat-form-field appearance="fill">
             <mat-label>Descripción</mat-label>
             <textarea matInput [(ngModel)]="data.category.description"></textarea>
           </mat-form-field>
@@ -23,7 +23,7 @@
   <div class="row">
     <div class="col-xs-12">
         <div class="box">
-          <mat-form-field>
+          <mat-form-field appearance="fill">
             <mat-label>Icono</mat-label>
             <input matInput [(ngModel)]="data.category.icon" type="text">
           </mat-form-field>
@@ -31,7 +31,9 @@
     </div>
   </div>
 </div>
-<div mat-dialog-actions class="center">
-  <button mat-raised-button color="accent" (click)="onNoClick()">Cancelar</button>
-  <button mat-raised-button color="primary"[mat-dialog-close]="data" cdkFocusInitial>{{ data.action }}</button>
+<div mat-dialog-actions>
+  <div class="center">
+    <button mat-raised-button color="accent" (click)="onNoClick()">Cancelar</button>
+    <button mat-raised-button color="primary"[mat-dialog-close]="data" cdkFocusInitial>{{ data.action }}</button>
+  </div>
 </div>

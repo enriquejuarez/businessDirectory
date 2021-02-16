@@ -8,6 +8,6 @@
     <strong>{{ category.description.slice(0, 50) }}...</strong>
   </mat-card-content>
   <mat-card-actions class="center-xs mb-3">
-    <button mat-raised-button class="btn-cart">Editar</button>
+    <button mat-raised-button class="btn-cart" (click)="editCategory(category)">Editar</button>
   </mat-card-actions>
 </mat-card>

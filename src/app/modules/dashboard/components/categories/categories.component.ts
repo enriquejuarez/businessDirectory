@@ -4,6 +4,8 @@ import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog
 import { Categories } from '../../../../models/categories.model';
 import { CategoryService } from './../../../core/services/category.service';
 
+import { ToastrService } from 'ngx-toastr';
+
 @Component({
   selector: 'app-categories',
   templateUrl: './categories.component.html',
@@ -18,41 +20,50 @@ export class CategoriesComponent implements OnInit {
     description: '',
     icon: ''
   };
-  title = 'Nueva categoría';
-  action = 'Guardar';
 
   constructor(
     private categoryService: CategoryService,
-    public dialog: MatDialog
+    public dialog: MatDialog,
+    private toastr: ToastrService
   ) { }
 
   ngOnInit(): void {
     this.categoryService.getAllCategories()
     .subscribe( (categories) => {
-      console.log(categories);
       this.categories = categories;
     },
       err => { console.log('Se ha generado un error: ', err);
     });
   }
 
-  openDialog(): void {
+  openDialog(operation: string, operationText: string, categoryData: Categories): void {
     const dialogRef = this.dialog.open(CategorydataComponent, {
       width: '900px',
       data: {
-        category: this.category,
-        title: this.title,
-        action: this.action
+        category: categoryData,
+        title: operationText,
+        action: operation
       }
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      console.log('The dialog was closed');
-      console.log(result);
       if (result !== undefined) {
-        this.saveCategory(result.category, 'new');
+        if (operation === 'new') {
+          this.saveCategory(result.category, 'new');
+          this.toastr.success('Operación exitosa!', 'Categoría creada');
+        }else{
+          this.saveCategory(result.category, 'edit');
+          this.toastr.success('Operación exitosa!', 'Categoría actualizada');
+        }
       }
+    },
+    err => {
+      this.toastr.error('Operación falló', 'Contacte a soporte');
     });
+  }
+
+  editCategory(category: Categories): void{
+    this.openDialog('Editar', 'Editar categoría', category);
   }
 
   saveCategory(category: Categories, action: string): void{
