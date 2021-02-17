@@ -4,6 +4,8 @@ import { Routes, RouterModule } from '@angular/router';
 import { IndexComponent } from './components/index/index.component';
 import { LayoutComponent } from './components/layout/layout.component';
 import { CategoriesComponent } from './components/categories/categories.component';
+import { PlacesComponent } from './components/places/places.component';
+import { PlaceFormComponent } from './components/place-form/place-form.component';
 
 const routes: Routes = [
   {
@@ -17,6 +19,14 @@ const routes: Routes = [
       {
         path: 'categories',
         component: CategoriesComponent
+      },
+      {
+        path: 'places',
+        component: PlacesComponent
+      },
+      {
+        path: 'places/create',
+        component: PlaceFormComponent
       }
     ]
   }

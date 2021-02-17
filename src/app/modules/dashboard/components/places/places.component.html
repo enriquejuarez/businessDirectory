@@ -1,0 +1,26 @@
+<div class="container">
+  <div class="row actions">
+    <div class="col-xs-12 col-sm-10">
+      <div class="box">
+        <mat-form-field appearance="fill" class="search">
+          <input placeholder="Buscar" matInput type="text" [(ngModel)]="searchFilter">
+        </mat-form-field>
+      </div>
+    </div>
+    <div class="col-xs-12 col-sm-2">
+      <div class="box">
+        <div class="icons">
+          <button mat-fab color="primary" aria-label="Search category" (click)="filterPlaces()">
+            <mat-icon>search</mat-icon>
+          </button>
+          <button mat-fab color="primary" aria-label="Add category">
+            <mat-icon>add</mat-icon>
+          </button>
+        </div>  
+      </div>
+    </div>
+  </div>
+  <div class="place-grid mb-50 mt-30">
+    <app-place *ngFor="let place of places" [place]="place"></app-place>
+  </div>
+</div>

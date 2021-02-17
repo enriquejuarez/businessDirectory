@@ -15,7 +15,7 @@ export class LayoutComponent implements OnInit {
   menuOptions = [
     {
       name: 'Comercios',
-      link: ''
+      link: 'places'
     },
     {
       name: 'Categorías',
