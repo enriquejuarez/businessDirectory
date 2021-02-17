@@ -20,6 +20,8 @@ export class CategoriesComponent implements OnInit {
     description: '',
     icon: ''
   };
+  searchFilter = '';
+  categoriesBackup: Categories[];
 
   constructor(
     private categoryService: CategoryService,
@@ -31,6 +33,7 @@ export class CategoriesComponent implements OnInit {
     this.categoryService.getAllCategories()
     .subscribe( (categories) => {
       this.categories = categories;
+      this.categoriesBackup = categories;
     },
       err => { console.log('Se ha generado un error: ', err);
     });
@@ -71,6 +74,16 @@ export class CategoriesComponent implements OnInit {
       category.id = Date.now();
     }
     this.categoryService.saveCategory(category);
+  }
+
+  filterCategory(): void{
+    if (!this.searchFilter) {
+      this.categories = this.categoriesBackup;
+      return;
+    }
+    this.categories = this.categories.filter((category) => {
+      return category.name.toLowerCase().includes(this.searchFilter.toLowerCase());
+    });
   }
 
 }
