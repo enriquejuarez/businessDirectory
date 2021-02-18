@@ -7,6 +7,9 @@
     <mat-card-subtitle>Creado: {{ place.id | date:'medium' }}</mat-card-subtitle>
   </mat-card-header>
   <mat-card-content>
-    <p class="text">{{ place.description }}</p>
+    <p class="text">{{ place.description.slice(0, 180) }} ...</p>
   </mat-card-content>
+  <mat-card-actions class="center-xs mb-3">
+    <button mat-raised-button class="btn-cart" (click)="editPlace(place)">Editar</button>
+  </mat-card-actions>
 </mat-card>

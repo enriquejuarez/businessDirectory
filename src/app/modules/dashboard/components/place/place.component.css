@@ -5,3 +5,8 @@
 .place-category{
   font-style: italic;
 }
+mat-card-content{
+  max-height: 120px;
+  min-height: 120px;
+  overflow-y: hidden;
+}

@@ -10,17 +10,17 @@
     <div class="col-xs-12 col-sm-2">
       <div class="box">
         <div class="icons">
-          <button mat-fab color="primary" aria-label="Search category" (click)="filterPlaces()">
+          <button mat-fab color="primary" aria-label="Search place" (click)="filterPlaces()">
             <mat-icon>search</mat-icon>
           </button>
-          <button mat-fab color="primary" aria-label="Add category">
+          <a mat-fab color="primary" aria-label="Add place" routerLink="create/new">
             <mat-icon>add</mat-icon>
-          </button>
+          </a>
         </div>  
       </div>
     </div>
   </div>
-  <div class="place-grid mb-50 mt-30">
-    <app-place *ngFor="let place of places" [place]="place"></app-place>
+  <div class="place-grid mb-50 mt-30" *ngIf="places.length">
+    <app-place *ngFor="let place of places" [place]="place" (placeClicked)="editPlace($event)"></app-place>
   </div>
 </div>

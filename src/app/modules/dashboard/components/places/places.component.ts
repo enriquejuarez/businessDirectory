@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 import { Places } from './../../../../models/places.model';
 import { PlacesService } from './../../../core/services/places.service';
@@ -15,13 +16,13 @@ export class PlacesComponent implements OnInit {
   placesBackup: Places[];
 
   constructor(
-    private placesService: PlacesService
+    private placesService: PlacesService,
+    private router: Router
   ) { }
 
   ngOnInit(): void {
     this.places = this.placesService.getAllPlaces()
     .subscribe( (places) => {
-      console.log(places);
       this.places = places;
       this.placesBackup = places;
     },
@@ -36,5 +37,9 @@ export class PlacesComponent implements OnInit {
     this.places = this.places.filter((category) => {
       return category.name.toLowerCase().includes(this.searchFilter.toLowerCase());
     });
+  }
+
+  editPlace(place: Places): void{
+    this.router.navigate(['/administration/places/create', place.id]);
   }
 }

@@ -81,7 +81,10 @@
         </div>
       </mat-card-content>
       <mat-card-actions>
-        <button [disabled]="form.invalid" mat-raised-button type="submit">Guardar</button>
+        <div class="center-text">
+          <button [disabled]="form.invalid" mat-raised-button type="submit">Guardar</button>
+          <a mat-raised-button routerLink="/administration/places">Cancelar</a>
+        </div>
       </mat-card-actions>
     </mat-card>
   </form>

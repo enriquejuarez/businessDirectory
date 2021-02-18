@@ -25,7 +25,7 @@ const routes: Routes = [
         component: PlacesComponent
       },
       {
-        path: 'places/create',
+        path: 'places/create/:id',
         component: PlaceFormComponent
       }
     ]
