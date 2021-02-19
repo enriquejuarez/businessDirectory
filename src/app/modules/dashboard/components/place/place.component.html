@@ -10,6 +10,9 @@
     <p class="text">{{ place.description.slice(0, 180) }} ...</p>
   </mat-card-content>
   <mat-card-actions class="center-xs mb-3">
-    <button mat-raised-button class="btn-cart" (click)="editPlace(place)">Editar</button>
+    <div class="center-text">
+      <button mat-raised-button class="btn-cart" (click)="editPlace(place)">Editar</button>
+      <button mat-raised-button (click)="deletePlace(place)">Eliminar</button>
+    </div>
   </mat-card-actions>
 </mat-card>

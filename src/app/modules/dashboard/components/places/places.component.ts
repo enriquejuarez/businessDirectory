@@ -4,6 +4,8 @@ import { Router } from '@angular/router';
 import { Places } from './../../../../models/places.model';
 import { PlacesService } from './../../../core/services/places.service';
 
+import { ToastrService } from 'ngx-toastr';
+
 @Component({
   selector: 'app-places',
   templateUrl: './places.component.html',
@@ -17,7 +19,8 @@ export class PlacesComponent implements OnInit {
 
   constructor(
     private placesService: PlacesService,
-    private router: Router
+    private router: Router,
+    private toastr: ToastrService
   ) { }
 
   ngOnInit(): void {
@@ -41,5 +44,14 @@ export class PlacesComponent implements OnInit {
 
   editPlace(place: Places): void{
     this.router.navigate(['/administration/places/create', place.id]);
+  }
+
+  deletePlace(place: Places): void{
+    this.placesService.deletePlace(place)
+    .then(() => {
+      this.toastr.success('Operación exitosa!', 'Comercio eliminado');
+    }).catch(() => {
+      this.toastr.error('Contacte a soporte', 'No es posible eliminar en este momento');
+    });
   }
 }

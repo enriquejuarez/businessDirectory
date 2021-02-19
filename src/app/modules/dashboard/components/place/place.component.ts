@@ -11,6 +11,7 @@ export class PlaceComponent implements OnInit {
 
   @Input() place: Places;
   @Output() placeClicked: EventEmitter<any> = new EventEmitter();
+  @Output() placeClickedDelete: EventEmitter<any> = new EventEmitter();
 
   constructor() { }
 
@@ -19,6 +20,10 @@ export class PlaceComponent implements OnInit {
 
   editPlace(place: Places): void{
     this.placeClicked.emit(place);
+  }
+
+  deletePlace(place: Places): void{
+    this.placeClickedDelete.emit(place);
   }
 
 }

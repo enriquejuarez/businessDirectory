@@ -21,6 +21,6 @@
     </div>
   </div>
   <div class="place-grid mb-50 mt-30" *ngIf="places.length">
-    <app-place *ngFor="let place of places" [place]="place" (placeClicked)="editPlace($event)"></app-place>
+    <app-place *ngFor="let place of places" [place]="place" (placeClicked)="editPlace($event)" (placeClickedDelete)="deletePlace($event)"></app-place>
   </div>
 </div>
