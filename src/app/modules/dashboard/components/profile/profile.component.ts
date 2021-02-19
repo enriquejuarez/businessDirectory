@@ -1,5 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+
+import { AuthService } from './../../../core/services/auth.service';
+import { User } from './../../../../models/user.model';
+
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-profile',
@@ -13,24 +18,30 @@ export class ProfileComponent implements OnInit {
 
   constructor(
     private formBuilder: FormBuilder,
+    private authService: AuthService,
+    private toastr: ToastrService
   ) {
     this.buildForm();
   }
 
   ngOnInit(): void {
+    setTimeout(() => {
+      let userData = this.authService.getUserData();
+      this.profileForm.patchValue(userData);  
+    }, 1000);
   }
 
   private buildForm(): void{
     this.profileForm = this.formBuilder.group({
-      name: ['', [Validators.required]],
-      description: ['', [Validators.required]],
-      price: ['', [Validators.required]],
-      stock: ['', [Validators.required]],
-      brand: ['', [Validators.required]],
-      model: ['', [Validators.required]],
-      images: [''],
-      features: this.formBuilder.array([])
+      email: ['', [Validators.required]],
+      displayName: ['', []]
     });
+  }
+
+  updateProfile(event: Event): void{
+    this.authService.updateProfile(this.profileForm.value);
+    this.toastr.success('Operación exitosa!', 'Perfil actualizado');
+    
   }
 
 }

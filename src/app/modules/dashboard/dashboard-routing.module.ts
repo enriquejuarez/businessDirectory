@@ -6,6 +6,7 @@ import { LayoutComponent } from './components/layout/layout.component';
 import { CategoriesComponent } from './components/categories/categories.component';
 import { PlacesComponent } from './components/places/places.component';
 import { PlaceFormComponent } from './components/place-form/place-form.component';
+import { ProfileComponent } from './components/profile/profile.component';
 
 const routes: Routes = [
   {
@@ -27,6 +28,10 @@ const routes: Routes = [
       {
         path: 'places/create/:id',
         component: PlaceFormComponent
+      },
+      {
+        path: 'profile',
+        component: ProfileComponent
       }
     ]
   }

@@ -1,3 +1,4 @@
+import { Message } from '@angular/compiler/src/i18n/i18n_ast';
 import { Injectable } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { Router } from '@angular/router';
@@ -19,12 +20,13 @@ export class AuthService {
   ) {
     this.angularFireAuth.authState
       .subscribe((user) => {
-        console.log('Se ejecuta un cambio');
         if (user) {
           this.userState = user;
           localStorage.setItem('business', JSON.stringify(this.userState));
           JSON.parse(localStorage.getItem('business'));
           this.isLoggedIn = true;
+          console.log('Entra al método de construcción');
+          console.log('1', user);
         }else{
           localStorage.setItem('business', null);
           JSON.parse(localStorage.getItem('business'));
@@ -60,7 +62,15 @@ export class AuthService {
     currentUser.updateProfile({
       displayName: user.displayName,
       photoURL: 'https://cdn.pixabay.com/photo/2016/08/18/11/00/man-1602633_960_720.png'
+    })
+    .then((user) => {
+    })
+    .catch(() => {
     });
+  }
+
+  getUserData(): any{
+    return this.userState;
   }
 
   isLogged(): any{
@@ -73,7 +83,8 @@ export class AuthService {
       email: user.email,
       displayName: user.displayName,
       photoURL: user.photoURL,
-      emailVerified: user.emailVerified
+      emailVerified: user.emailVerified,
+      phoneNumber: user.phoneNumber
     };
   }
 

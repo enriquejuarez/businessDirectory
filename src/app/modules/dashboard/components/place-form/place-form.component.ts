@@ -71,6 +71,7 @@ export class PlaceFormComponent implements OnInit {
       duration: 2000,
     });
   }
+  
   savePlace(event: Event): void{
     event.preventDefault();
     if (!this.form.valid) {
