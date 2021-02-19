@@ -103,7 +103,13 @@ export class PlaceFormComponent implements OnInit {
       category: ['', [Validators.required]],
       street: ['', [Validators.required]],
       city: ['', [Validators.required]],
-      country: ['', [Validators.required]]
+      country: ['', [Validators.required]],
+      email: ['', []],
+      phone: ['', []],
+      schedule: ['', []],
+      celphone: ['', []],
+      twitter: ['', []],
+      facebook: ['', []]
     });
   }
 }

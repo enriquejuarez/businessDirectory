@@ -1,14 +1,6 @@
 <div class="container">
-  <mat-card class="mat-elevation-z8 mt-40">
-    <p class="title">{{ place.name }}</p>
-    <p>[{{ place.category }}]</p>
-    <p class="text">{{ place.description }}</p>
-    <div>
-      <address>Ubicación: {{ place.street }} - {{ place.city }} - {{ place.country }}</address>
-    </div>
-  </mat-card>
   <div class="location-map mt-20 mb-40">
-    <div class="map-container">
+    <div class="map-container center">
       <google-map 
         height="400px"
         width="50%"
@@ -23,6 +15,25 @@
       </google-map>
     </div>
   </div>
+  <mat-card class="mat-elevation-z8 mt-40">
+    <p class="title">{{ place.name }}</p>
+    <p class="tag">[{{ place.category }}]</p>
+    <p class="text">{{ place.description }}</p>
+    <h2>Datos de contacto</h2>
+    <div class="text">
+      <p>Tel. {{ place.phone }}</p>
+      <p>Cel. {{ place.celphone}}</p>
+      <p>Correo: {{ place.email }}</p>
+    </div>
+    <h2>Redes sociales</h2>
+    <div class="text">
+      <p>Twitter</p>
+      <p>Facebook</p>
+    </div>
+    <div>
+      <address>Ubicación: {{ place.street }} - {{ place.city }} - {{ place.country }}</address>
+    </div>
+  </mat-card>
   <div class="comment-container">
     <p class="title">Comentarios</p>
     <div class="comment mb-10">

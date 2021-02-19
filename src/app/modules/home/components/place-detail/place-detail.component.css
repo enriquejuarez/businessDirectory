@@ -8,3 +8,8 @@ address{
   font-size: 1.2rem;
   padding: 15px 20px;
 }
+.tag{
+  font-size: 1.2rem;
+  font-weight: 600;
+  letter-spacing: 2px;
+}
