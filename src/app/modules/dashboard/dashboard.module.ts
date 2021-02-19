@@ -12,10 +12,11 @@ import { CategoryComponent } from './components/category/category.component';
 import { PlacesComponent } from './components/places/places.component';
 import { PlaceComponent } from './components/place/place.component';
 import { PlaceFormComponent } from './components/place-form/place-form.component';
+import { ProfileComponent } from './components/profile/profile.component';
 
 @NgModule({
   // tslint:disable-next-line: max-line-length
-  declarations: [IndexComponent, LayoutComponent, CategoriesComponent, CategoryComponent, CategorydataComponent, PlacesComponent, PlaceComponent, PlaceFormComponent],
+  declarations: [IndexComponent, LayoutComponent, CategoriesComponent, CategoryComponent, CategorydataComponent, PlacesComponent, PlaceComponent, PlaceFormComponent, ProfileComponent],
   imports: [
     CommonModule,
     DashboardRoutingModule,

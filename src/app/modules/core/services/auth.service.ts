@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { Router } from '@angular/router';
+import firebase from 'firebase/app';
 
 import { User } from './../../../models/user.model';
 
@@ -51,6 +52,14 @@ export class AuthService {
     })
     .catch((error) => {
       console.log('Error', error);
+    });
+  }
+
+  updateProfile(user: User): void{
+    const currentUser = firebase.auth().currentUser;
+    currentUser.updateProfile({
+      displayName: user.displayName,
+      photoURL: 'https://cdn.pixabay.com/photo/2016/08/18/11/00/man-1602633_960_720.png'
     });
   }
 
