@@ -26,7 +26,6 @@ export class PlaceDetailComponent implements OnInit {
       this.id = params.id;
       this.place = this.placesService.getPlace(Number(this.id))
       .subscribe( (place) => {
-        console.log(place);
         this.place = place[0];
       },
       err => { console.log(err); });

@@ -1,6 +1,9 @@
 <div class="container">
+  <div class="route">
+    <a routerLink="/places">Comercios</a> > {{ place.name }}
+  </div>
   <div class="location-map mt-20 mb-40">
-    <div class="map-container center">
+    <div class="map-container">
       <google-map 
         height="400px"
         width="50%"
@@ -15,7 +18,7 @@
       </google-map>
     </div>
   </div>
-  <mat-card class="mat-elevation-z8 mt-40">
+  <mat-card class="mat-elevation-z8 mt-40" *ngIf="place">
     <p class="title">{{ place.name }}</p>
     <p class="tag">[{{ place.category }}]</p>
     <p class="text">{{ place.description }}</p>
@@ -34,7 +37,7 @@
       <address>Ubicación: {{ place.street }} - {{ place.city }} - {{ place.country }}</address>
     </div>
   </mat-card>
-  <div class="comment-container">
+  <div class="comment-container mt-40 mb-40">
     <p class="title">Comentarios</p>
     <div class="comment mb-10">
       <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Neque reiciendis inventore aliquid, ab quo quos deleniti odit voluptatibus voluptatem molestiae!</p>

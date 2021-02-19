@@ -13,3 +13,6 @@ address{
   font-weight: 600;
   letter-spacing: 2px;
 }
+.map-container{
+  margin: 0 auto;
+}
