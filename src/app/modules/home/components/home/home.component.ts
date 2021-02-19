@@ -88,13 +88,4 @@ export class HomeComponent implements OnInit {
     this.display = event.latLng.toJSON();
   }
 
-  deletePlace(place: Places): void{
-    this.placesService.deletePlace(place)
-    .then(() => {
-      this.toastr.success('Operación exitosa!', 'Comercio eliminado');
-    }).catch(() => {
-      this.toastr.error('Contacte a soporte', 'No es posible eliminar en este momento');
-    });
-  }
-
 }

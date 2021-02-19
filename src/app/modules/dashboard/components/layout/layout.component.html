@@ -6,13 +6,12 @@
       </mat-list-option>
     </mat-selection-list>
   </mat-drawer>
-
   <div class="sidenav-content">
     <mat-toolbar color="primary">
       <button mat-icon-button class="" aria-label="Open navigation"  (click)="drawer.toggle()">
         <mat-icon>menu</mat-icon>
       </button>
-      <span>Business Directory Admin</span>
+      <a routerLink="/places"><span>Business Directory Admin</span></a>
       <span class="spacer"></span>
       <button mat-button [matMenuTriggerFor]="sessionMenu" aria-label="Session options">
         <div>{{ email }}</div>
