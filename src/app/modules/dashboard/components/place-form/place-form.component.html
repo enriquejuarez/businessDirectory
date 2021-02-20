@@ -9,6 +9,7 @@
         <div class="row">
           <div class="col-xs-12 col-md-6">
             <mat-form-field appearance="fill">
+              <mat-label>Nombre</mat-label>
               <input placeholder="Nombre" formControlName="name" matInput type="text">
             </mat-form-field>
           </div>
@@ -53,10 +54,7 @@
             <mat-form-field appearance="fill">
               <mat-label>Categoría</mat-label>
               <mat-select formControlName="category">
-                <mat-option value="Restaurante">Restaurante</mat-option>
-                <mat-option value="Hotel">Hotel</mat-option>
-                <mat-option value="Abarrotes">Abarrotes</mat-option>
-                <mat-option value="Escuela">Escuela</mat-option>
+                <mat-option *ngFor="let category of categories" value="{{ category.name }}">{{ category.name }}</mat-option>
               </mat-select>
             </mat-form-field>
           </div>
