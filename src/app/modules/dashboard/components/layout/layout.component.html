@@ -1,0 +1,32 @@
+<mat-drawer-container class="container" autosize>
+  <mat-drawer #drawer class="sidenav" mode="side">
+    <mat-selection-list #shoes [multiple]="false">
+      <mat-list-option *ngFor="let option of menuOptions" [value]="option" routerLink="{{ option.link }}">
+        {{ option.name }}
+      </mat-list-option>
+    </mat-selection-list>
+  </mat-drawer>
+  <div class="sidenav-content">
+    <mat-toolbar color="primary">
+      <button mat-icon-button class="" aria-label="Open navigation"  (click)="drawer.toggle()">
+        <mat-icon>menu</mat-icon>
+      </button>
+      <a routerLink="/places"><span>Business Directory Admin</span></a>
+      <span class="spacer"></span>
+      <button mat-button [matMenuTriggerFor]="sessionMenu" aria-label="Session options">
+        <div>{{ email }}</div>
+      </button>
+      <mat-menu #sessionMenu="matMenu">
+        <a mat-menu-item routerLink="profile">
+          <mat-icon>edit</mat-icon>
+          <span>Editar perfil</span>
+        </a>
+        <button mat-menu-item>
+          <mat-icon>logout</mat-icon>
+          <span>Cerrar sesión</span>
+        </button>
+      </mat-menu>
+    </mat-toolbar>
+    <router-outlet></router-outlet>
+  </div>
+</mat-drawer-container>

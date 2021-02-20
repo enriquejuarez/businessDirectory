@@ -1,12 +1,7 @@
 <div class="container">
-  <mat-card class="mat-elevation-z8 mt-40">
-    <p class="title">{{ place.name }}</p>
-    <p>[{{ place.category }}]</p>
-    <p class="text">{{ place.description }}</p>
-    <div>
-      <address>Ubicación: {{ place.street }} - {{ place.city }} - {{ place.country }}</address>
-    </div>
-  </mat-card>
+  <div class="route">
+    <a routerLink="/places">Comercios</a> > {{ place.name }}
+  </div>
   <div class="location-map mt-20 mb-40">
     <div class="map-container">
       <google-map 
@@ -23,7 +18,26 @@
       </google-map>
     </div>
   </div>
-  <div class="comment-container">
+  <mat-card class="mat-elevation-z8 mt-40" *ngIf="place">
+    <p class="title">{{ place.name }}</p>
+    <p class="tag">[{{ place.category }}]</p>
+    <p class="text">{{ place.description }}</p>
+    <h2>Datos de contacto</h2>
+    <div class="text">
+      <p>Tel. {{ place.phone }}</p>
+      <p>Cel. {{ place.celphone}}</p>
+      <p>Correo: {{ place.email }}</p>
+    </div>
+    <h2>Redes sociales</h2>
+    <div class="text">
+      <p>Twitter</p>
+      <p>Facebook</p>
+    </div>
+    <div>
+      <address>Ubicación: {{ place.street }} - {{ place.city }} - {{ place.country }}</address>
+    </div>
+  </mat-card>
+  <div class="comment-container mt-40 mb-40">
     <p class="title">Comentarios</p>
     <div class="comment mb-10">
       <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Neque reiciendis inventore aliquid, ab quo quos deleniti odit voluptatibus voluptatem molestiae!</p>

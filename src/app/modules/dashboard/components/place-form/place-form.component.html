@@ -1,0 +1,135 @@
+<div class="container">
+  <form [formGroup]="form" (ngSubmit)="savePlace($event)" #f="ngForm">
+    <input formControlName="id" matInput type="number" hidden>
+    <mat-card  class="mt-20">
+      <mat-card-header>
+        <mat-card-title>Nuevo comercio</mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <div class="row">
+          <div class="col-xs-12 col-md-6">
+            <mat-form-field appearance="fill">
+              <mat-label>Nombre</mat-label>
+              <input placeholder="Nombre" formControlName="name" matInput type="text">
+            </mat-form-field>
+          </div>
+          <div class="col-xs-12 col-md-6">
+            <mat-form-field appearance="fill">
+              <textarea placeholder="Descripción" formControlName="description" matInput></textarea>
+            </mat-form-field>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-xs-12 col-md-3">
+            <mat-form-field appearance="fill">
+              <mat-label>Plan</mat-label>
+              <mat-select formControlName="plan">
+                <mat-option value="free">Gratuito</mat-option>
+                <mat-option value="premium">Premium</mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+          <div class="col-xs-12 col-md-3">
+            <mat-form-field appearance="fill">
+              <input placeholder="Distancia" formControlName="distance" matInput type="number">
+            </mat-form-field>
+          </div>
+          <div class="col-xs-12 col-md-3">
+            <mat-form-field appearance="fill">
+              <input placeholder="Cercanía" formControlName="closeness" matInput type="number">
+            </mat-form-field>
+          </div>
+          <div class="col-xs-12 col-md-3">
+            <mat-form-field appearance="fill">
+              <mat-label>Estatus</mat-label>
+              <mat-select formControlName="active">
+                <mat-option value="1">Activo</mat-option>
+                <mat-option value="0">Inactivo</mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-xs-12 col-md-3">
+            <mat-form-field appearance="fill">
+              <mat-label>Categoría</mat-label>
+              <mat-select formControlName="category">
+                <mat-option *ngFor="let category of categories" value="{{ category.name }}">{{ category.name }}</mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+        </div>
+        <h2>Datos contacto</h2>
+        <div class="row">
+          <div class="col-xs-12 col-md-3">
+            <mat-form-field appearance="fill">
+              <input placeholder="Email" formControlName="email" matInput type="email">
+            </mat-form-field>
+          </div>
+          <div class="col-xs-12 col-md-3">
+            <mat-form-field appearance="fill">
+              <input placeholder="Teléfono" formControlName="phone" matInput type="number">
+            </mat-form-field>
+          </div>
+          <div class="col-xs-12 col-md-3">
+            <mat-form-field appearance="fill">
+              <input placeholder="Celular" formControlName="celphone" matInput type="number">
+            </mat-form-field>
+          </div>
+          <div class="col-xs-12 col-md-3">
+            <mat-form-field appearance="fill">
+              <input placeholder="Horario" formControlName="schedule" matInput type="text">
+            </mat-form-field>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-xs-12 col-md-4">
+            <mat-form-field appearance="fill">
+              <input placeholder="Twitter" formControlName="twitter" matInput type="text">
+            </mat-form-field>
+          </div>
+          <div class="col-xs-12 col-md-4">
+            <mat-form-field appearance="fill">
+              <input placeholder="Facebook" formControlName="facebook" matInput type="text">
+            </mat-form-field>
+          </div>
+        </div>
+        <h2>Datos dirección</h2>
+        <div class="row">
+          <div class="col-xs-3">
+            <mat-form-field appearance="fill">
+              <input placeholder="Calle y Número" formControlName="street" matInput type="text">
+            </mat-form-field>
+          </div>
+          <div class="col-xs-3">
+            <mat-form-field appearance="fill">
+              <input placeholder="Ciudad" formControlName="city" matInput type="text">
+            </mat-form-field>
+          </div>
+          <div class="col-xs-3">
+            <mat-form-field appearance="fill">
+              <input placeholder="País" formControlName="country" matInput type="text">
+            </mat-form-field>
+          </div>
+        </div>
+      </mat-card-content>
+      <mat-card-actions>
+        <div class="center-text">
+          <button [disabled]="form.invalid" mat-raised-button type="submit">Guardar</button>
+          <a mat-raised-button routerLink="/administration/places">Cancelar</a>
+        </div>
+      </mat-card-actions>
+    </mat-card>
+  </form>
+  <div>
+    <h2>Buscar dirección en Google Maps</h2>
+    <form>
+      <mat-form-field appearance="fill">
+        <input [formControl]="searchField" matInput type="text">
+      </mat-form-field>
+    </form>
+    <ul>
+      <li *ngFor="let result of results$ | async">{{ result.formatted_address }}</li>
+    </ul>
+  </div>
+</div>

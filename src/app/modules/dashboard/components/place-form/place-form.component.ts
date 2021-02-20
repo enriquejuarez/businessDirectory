@@ -5,10 +5,11 @@ import { MatSnackBar, MAT_SNACK_BAR_DATA } from '@angular/material/snack-bar';
 import { ActivatedRoute, Params } from '@angular/router';
 import { Observable } from 'rxjs';
 import { switchMap, map, debounceTime } from 'rxjs/operators';
-// import 'rxjs/Rx';
+import { HttpClient } from '@angular/common/http';
 
 import { PlacesService } from './../../../core/services/places.service';
-import { HttpClient } from '@angular/common/http';
+import { CategoryService } from './../../../core/services/category.service';
+import { Categories } from 'src/app/models/categories.model';
 
 @Component({
   selector: 'app-place-form',
@@ -22,6 +23,7 @@ export class PlaceFormComponent implements OnInit {
   id: string;
   results$: Observable<any>;
   searchField: FormControl;
+  categories: Categories[] = [];
 
   constructor(
     private formBuilder: FormBuilder,
@@ -29,7 +31,8 @@ export class PlaceFormComponent implements OnInit {
     private placesService: PlacesService,
     private snackBar: MatSnackBar,
     private activatedRoute: ActivatedRoute,
-    private http: HttpClient
+    private http: HttpClient,
+    private categoryService: CategoryService
   ) {
     this.buildForm();
     this.activatedRoute.params.subscribe((params: Params) => {
@@ -64,6 +67,13 @@ export class PlaceFormComponent implements OnInit {
         this.form.patchValue(place[0]);
       });
     }
+    this.categoryService.getAllCategories()
+    .subscribe( (categories) => {
+      this.categories = categories;
+      console.log('Se genera poblado de categorias', categories);
+    },
+      err => { console.log('Se ha generado un error: ', err);
+    });
   }
 
   openSnackBar(message: string): void {
@@ -72,6 +82,7 @@ export class PlaceFormComponent implements OnInit {
       duration: 2000,
     });
   }
+  
   savePlace(event: Event): void{
     event.preventDefault();
     if (!this.form.valid) {
@@ -104,7 +115,13 @@ export class PlaceFormComponent implements OnInit {
       category: ['', [Validators.required]],
       street: ['', [Validators.required]],
       city: ['', [Validators.required]],
-      country: ['', [Validators.required]]
+      country: ['', [Validators.required]],
+      email: ['', []],
+      phone: ['', []],
+      schedule: ['', []],
+      celphone: ['', []],
+      twitter: ['', []],
+      facebook: ['', []]
     });
   }
 }

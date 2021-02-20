@@ -1,24 +1,24 @@
 <mat-toolbar color="primary">
-  <button mat-icon-button class="example-icon" aria-label="">
+  <button mat-icon-button class="icon" aria-label="">
     <mat-icon>menu</mat-icon>
   </button>
   <span><a routerLink="/places">Business Directory</a></span>
   <span class="spacer"></span>
   
   <div *ngIf="!loggendin">
-    <a mat-icon-button class="example-icon favorite-icon" aria-label="" routerLink="/auth/login">
+    <a mat-icon-button class="icon favorite-icon" aria-label="" routerLink="/auth/login">
       <mat-icon>login</mat-icon>
     </a>
-    <a mat-icon-button class="example-icon favorite-icon" aria-label="" routerLink="/auth/register">
+    <a mat-icon-button class="icon favorite-icon" aria-label="" routerLink="/auth/register">
       <mat-icon>person_add_alt_1</mat-icon>
     </a>
   </div>
   <div *ngIf="loggendin">
     <label *ngIf="email">{{ email }}</label>
-    <a mat-icon-button class="example-icon" aria-label="" routerLink="/places/create/new">
-      <mat-icon>add_circle</mat-icon>
+    <a mat-icon-button class="icon" aria-label="" routerLink="/administration">
+      <mat-icon>admin_panel_settings</mat-icon>
     </a>
-    <a mat-icon-button class="example-icon favorite-icon" aria-label="" (click)="logout()">
+    <a mat-icon-button class="icon favorite-icon" aria-label="" (click)="logout()">
       <mat-icon>logout</mat-icon>
     </a>
   </div>

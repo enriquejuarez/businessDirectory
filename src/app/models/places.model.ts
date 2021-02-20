@@ -11,5 +11,11 @@ export interface Places{
   country: string;
   lat?: number;
   lng?: number;
+  email?: string;
+  phone?: string;
+  schedule?: string;
+  celphone?: string;
+  twitter?: string;
+  facebook?: string;
   category: string;
 }

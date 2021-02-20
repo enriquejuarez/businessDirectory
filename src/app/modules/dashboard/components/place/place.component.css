@@ -1,0 +1,12 @@
+.place-title{
+  font-family: 'Bangers', cursive;
+  font-size: 1.5rem;
+}
+.place-category{
+  font-style: italic;
+}
+mat-card-content{
+  max-height: 120px;
+  min-height: 120px;
+  overflow-y: hidden;
+}
